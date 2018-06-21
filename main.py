@@ -26,7 +26,7 @@ def get_noc_data():
 def get_queue_status(noc_data):
   if noc_data != None:
     for ext in noc['queues']['QUEUE284']['loggedIn']:
-      if ext['status'] == 6 || ext['status'] == 2: 
+      if ext['status'] == 6 or ext['status'] == 2: 
         return True 
   return False 
 
