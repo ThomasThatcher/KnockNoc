@@ -4,6 +4,7 @@ import time, pychromecast, requests, json, sched
 volume_set, old_volume = False, 0
 cast = next(cc for cc in pychromecast.get_chromecasts() if cc.device.friendly_name == "TS1 Chromecast")
 scheduler = sched.scheduler(time.time, time.sleep)
+noc_url="http://changethistothenocurl.com/"
 
 def set_volume(v):
   cast.wait()
@@ -16,7 +17,7 @@ def lower_volume(v):
 
 def get_noc_data():
   try:
-    noc = requests.get(url='https://noc.ventraip.net.au/new/api.php').json()
+    noc = requests.get(url=noc_url).json()
     return noc
   except json.decoder.JSONDecodeError as e:
     print('Unexpected JSON response from the NOC', e)
